@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import useScrollReveal from '../hooks/useScrollReveal'
-import ValentineQuestion from './ValentineQuestion'
+import { motion, AnimatePresence } from "framer-motion";
+import useScrollReveal from "../hooks/useScrollReveal";
+import ValentineQuestion from "./ValentineQuestion";
 
 const letterContent = [
   "Sometimes I try to think about how everything started with us, and it still amazes me how someone like you became one of the most important parts of my life. You came into my world and slowly turned ordinary days into something I always look forward to.",
@@ -14,24 +14,31 @@ const letterContent = [
   "I don't know what the future fully holds, but one thing I am sure of is that I want you to be part of it. I want more memories, more laughs, more late night talks, and more days where I get to call you mine.",
 
   "So today, I just want to ask you something simple but very important to me…",
-]
-//ayaw gumana yawa
-const ParagraphReveal = ({ children, index }: { children: string; index: number }) => {
+];//message test
+const ParagraphReveal = ({
+  children,
+  index,
+}: {
+  children: string;
+  index: number;
+}) => {
   return (
     <motion.p
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
       className="text-gray-700 leading-relaxed text-base sm:text-lg mb-4 sm:mb-6"
     >
       {children}
     </motion.p>
-  )
-}
+  );
+};
 
 const Letter = () => {
-  const { scrollRef, isRevealed, handleScroll } = useScrollReveal({ threshold: 0.85 })
+  const { scrollRef, isRevealed, handleScroll } = useScrollReveal({
+    threshold: 0.85,
+  });
 
   return (
     <div className="flex justify-center items-center min-h-screen py-4 px-3 sm:py-6 sm:px-4">
@@ -42,7 +49,7 @@ const Letter = () => {
           duration: 0.8,
           ease: [0.22, 1, 0.36, 1],
         }}
-        style={{ willChange: 'transform' }}
+        style={{ willChange: "transform" }}
         className="relative max-w-3xl w-full bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col"
       >
         <div className="absolute inset-0 bg-white/40 rounded-2xl sm:rounded-3xl pointer-events-none" />
@@ -51,7 +58,11 @@ const Letter = () => {
           ref={scrollRef}
           onScroll={handleScroll}
           className="relative z-10 overflow-y-auto max-h-[85vh] sm:max-h-[80vh] p-5 sm:p-8 md:p-12 scroll-smooth scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overscrollBehavior: 'contain' }}
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            overscrollBehavior: "contain",
+          }}
         >
           <div className="text-center mb-5 sm:mb-8">
             <h1 className="font-playfair text-3xl sm:text-5xl md:text-6xl font-semibold text-purple-800 mb-3 sm:mb-4">
@@ -73,7 +84,7 @@ const Letter = () => {
                 key="valentine-question"
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <ValentineQuestion />
               </motion.div>
@@ -82,7 +93,7 @@ const Letter = () => {
         </div>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default Letter
+export default Letter;

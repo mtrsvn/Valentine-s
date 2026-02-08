@@ -5,6 +5,7 @@ import confetti from 'canvas-confetti'
 const ValentineQuestion = () => {
   const [accepted, setAccepted] = useState(false)
   const [coverNo, setCoverNo] = useState(false)
+  const hoveringYes = useRef(false)
 
   const yesBtnRef = useRef<HTMLButtonElement | null>(null)
   const noBtnRef = useRef<HTMLButtonElement | null>(null)
@@ -28,8 +29,25 @@ const ValentineQuestion = () => {
 
   const handleNoLeave = () => {
     if (accepted) return
-    setCoverNo(false)
-    setYesOffset({ x: 0, y: 0 })
+    // Don't snap back if mouse moved onto the covering Yes button
+    setTimeout(() => {
+      if (!hoveringYes.current) {
+        setCoverNo(false)
+        setYesOffset({ x: 0, y: 0 })
+      }
+    }, 10)
+  }
+
+  const handleYesEnter = () => {
+    hoveringYes.current = true
+  }
+
+  const handleYesLeave = () => {
+    hoveringYes.current = false
+    if (coverNo && !accepted) {
+      setCoverNo(false)
+      setYesOffset({ x: 0, y: 0 })
+    }
   }
 
   const handleYesClick = () => {
@@ -161,7 +179,10 @@ const ValentineQuestion = () => {
             onClick={handleYesClick}
             animate={{ x: yesOffset.x, y: yesOffset.y }}
             transition={{ type: 'spring', stiffness: 500, damping: 28 }}
-            className="px-7 py-2.5 sm:px-10 sm:py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white font-poppins font-semibold text-lg sm:text-xl rounded-full shadow-lg hover:shadow-2xl hover:from-pink-500 hover:to-rose-600 active:scale-95 transition-colors duration-200 z-10"
+            className="px-7 py-2.5 sm:px-10 sm:py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white font-poppins font-semibold text-lg sm:text-xl rounded-full shadow-lg hover:shadow-2xl hover:from-pink-500 hover:to-rose-600 active:scale-95 transition-colors duration-200 z-10 cursor-pointer relative"
+            onMouseEnter={handleYesEnter}
+            onMouseLeave={handleYesLeave}
+            style={{ pointerEvents: 'auto' }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
           >
