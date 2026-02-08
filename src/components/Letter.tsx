@@ -11,7 +11,7 @@ const letterContent = [
 
   "I love the way you care, the way you understand me, and the way you stay. Every memory with you is something I treasure, and every moment with you is something I want to keep choosing again and again.",
 
-  "I don't know what the future fully holds, but one thing I am sure of is that I want you to be part of it. I want more memories, more laughs, more late-night talks, and more days where I get to call you mine.",
+  "I don't know what the future fully holds, but one thing I am sure of is that I want you to be part of it. I want more memories, more laughs, more late night talks, and more days where I get to call you mine.",
 
   "So today, I just want to ask you something simple but very important to me…",
 ]

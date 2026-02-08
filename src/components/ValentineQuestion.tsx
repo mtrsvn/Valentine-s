@@ -122,7 +122,7 @@ const ValentineQuestion = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
-          className="font-playfair text-2xl sm:text-4xl md:text-5xl text-pink-600 mb-3 sm:mb-4"
+          className="font-playfair text-2xl sm:text-4xl md:text-5xl font-semibold text-pink-600 mb-3 sm:mb-4"
         >
           You just made me the happiest person
         </motion.h3>
@@ -130,7 +130,7 @@ const ValentineQuestion = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6, ease: 'easeOut' }}
-          className="font-poppins text-lg sm:text-xl text-purple-600 mt-2"
+          className="font-poppins text-lg text-purple-600 mt-2"
         >
           I love you more than words can say!
         </motion.p>
