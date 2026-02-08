@@ -15,7 +15,7 @@ const letterContent = [
 
   "So today, I just want to ask you something simple but very important to me…",
 ]
-
+//ayaw gumana yawa
 const ParagraphReveal = ({ children, index }: { children: string; index: number }) => {
   return (
     <motion.p
